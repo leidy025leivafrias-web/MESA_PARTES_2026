@@ -1,4 +1,4 @@
-def nota_maxima(registro):
+def nota_minima(registro):
     bimestre1 = float(registro["bimestre1"])
     bimestre2 = float(registro["bimestre2"])
     bimestre3 = float(registro["bimestre3"])
