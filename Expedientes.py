@@ -1,32 +1,47 @@
-from Codigo_expediente import Codigo_expediente
-from Codigo_estudiante import Codigo_estudiante
-from nivel_educativo import nivel_educativo
 
-def Expedientes(expedientes, estudiantes=None):
+from Codigo_expediente import Codigo_expediente
+def Expedientes(expedientes, estudiantes):
     print("\n===================================")
     print("      REGISTRAR EXPEDIENTE")
     print("===================================")
 
-    codigo = Codigo_expediente(expedientes)
-    print(f"\nCODIGO GENERADO: {codigo}")
+    if not estudiantes:
+        print("\nNo hay estudiantes registrados.")
+        return
+    
+    codigo_estudiante = input("\nIngrese el código del estudiante: ").strip().upper()
+    estudiante_encontrado = None
 
-    codigo_estudiante = Codigo_estudiante(estudiantes)
+    for estudiante in estudiantes:
+        if estudiante.get("codigo", "").strip().upper() == codigo_estudiante:
+            estudiante_encontrado = estudiante
+            break
+
+    if estudiante_encontrado is None:
+        print("\nERROR: No se encontró al estudiante.")
+        return
 
     for expediente in expedientes:
         if expediente["codigo_estudiante"] == codigo_estudiante:
-            print("*Error: este estudiante ya tiene un expediente registrado.*")
+            print("\nERROR: El estudiante ya tiene un expediente registrado.")
             return
 
-    nivel = nivel_educativo()
+    codigo = Codigo_expediente(expedientes)
 
-    expediente = {
+    nivel = estudiante_encontrado.get("nivel", "No especificado")
+
+    nuevo_expediente = {
         "codigo": codigo,
         "codigo_estudiante": codigo_estudiante,
         "nivel": nivel,
-        "estado": "Pendiente"
     }
 
-    expedientes.append(expediente)
+    expedientes.append(nuevo_expediente)
 
-    print("\nExpediente registrado correctamente.")
-    print(f"Código del expediente: {codigo}")
+    print("\n========================================")
+    print("       EXPEDIENTE REGISTRADO")
+    print("========================================")
+    print(f"CÓDIGO DEL EXPEDIENTE: {codigo}")
+    print(f"CÓDIGO DEL ESTUDIANTE: {codigo_estudiante}")
+    print(f"NIVEL EDUCATIVO: {nivel}")
+    print("========================================")

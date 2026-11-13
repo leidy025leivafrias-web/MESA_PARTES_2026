@@ -1,0 +1,5 @@
+﻿codigo,dni,nombres,paterno,materno,nivel,turno,taller
+E001,12345678,Victoria,Vazques,Tapia,Secundaria,Tarde,Carpintería
+E002,21436578,Isabela,Martinez,Vasquez,Inicial,Tarde,No aplica
+E003,87654321,Daniela,Perez,Vasquez,Inicial,Mañana,No aplica
+E004,78563421,Valentina,Valdes,Tirado,Primaria,Tarde,No aplica
