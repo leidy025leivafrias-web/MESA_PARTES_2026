@@ -28,8 +28,6 @@ def modificar_expediente(expedientes, estudiantes=None):
 
                 nuevo_codigo = Codigo_estudiante(estudiantes)
 
-                # Comprobar que el nuevo estudiante no tenga
-                # otro expediente registrado.
                 duplicado = any(
                     otro["codigo_estudiante"] == nuevo_codigo
                     and otro["codigo"] != codigo

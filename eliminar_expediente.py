@@ -1,8 +1,4 @@
 def eliminar_expediente(expedientes):
-    """
-    Elimina un expediente después de confirmar la operación.
-    """
-
     print("\n===================================")
     print("       ELIMINAR EXPEDIENTE")
     print("===================================")
@@ -22,14 +18,14 @@ def eliminar_expediente(expedientes):
             print(f"Estudiante: {expediente['codigo_estudiante']}")
 
             confirmacion = input(
-                "¿Está seguro de eliminarlo? (S/N): "
+                "¿Está seguro de eliminarlo? (SI/NO): "
             ).strip().upper()
 
-            if confirmacion == "S":
+            if confirmacion == "SI":
                 expedientes.pop(indice)
                 print("Expediente eliminado correctamente.")
 
-            elif confirmacion == "N":
+            elif confirmacion == "NO":
                 print("Eliminación cancelada.")
 
             else:

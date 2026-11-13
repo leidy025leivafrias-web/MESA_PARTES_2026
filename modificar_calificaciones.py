@@ -28,7 +28,7 @@ def modificar_calificacion(calificaciones):
                 print("Error: seleccione una opción válida.")
                 return
             clave = bimestres[opcion]
-            print(f"Nota actual: {registro[clave]:.2f}")
+            print(f"Nota actual: {float(registro[clave]):.2f}")
             nueva_nota = validar_nota(opcion)
             registro[clave] = nueva_nota
             print("\n*Calificación modificada correctamente.*")

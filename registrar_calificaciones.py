@@ -10,14 +10,14 @@ def registrar_calificaciones(calificaciones, expedientes):
     for expediente in expedientes:
         tiene = False
         for registro in calificaciones:
-             if registro ["código_expediente"] == expediente["codigo"]:
+             if registro ["codigo_expediente"] == expediente["codigo"]:
                   tiene = True
                   break
-             if not tiene:
+        if not tiene:
                   pendientes.append(expediente)
-        if not pendientes:
-             print("*Todos los expedientes ya tienen calificaciones.*")
-             return
+    if not pendientes:
+        print("*Todos los expedientes ya tienen calificaciones.*")
+        return
         
     print("\nExpediente sin calificaciones: ")
     for i, expediente in enumerate(pendientes, start=1):

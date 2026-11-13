@@ -5,6 +5,5 @@ def nota_minima(registro):
     bimestre4 = float(registro["bimestre4"])
 
     minima = min(bimestre1, bimestre2, bimestre3, bimestre4)
-    print(f"NOTA MÁXIMA: {minima:.2f}")
 
     return minima

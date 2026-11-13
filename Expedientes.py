@@ -1,5 +1,6 @@
 
 from Codigo_expediente import Codigo_expediente
+from Guardar_Expediente import guardar_solo_expedientes
 def Expedientes(expedientes, estudiantes):
     print("\n===================================")
     print("      REGISTRAR EXPEDIENTE")
@@ -37,6 +38,7 @@ def Expedientes(expedientes, estudiantes):
     }
 
     expedientes.append(nuevo_expediente)
+    guardar_solo_expedientes(expedientes)
 
     print("\n========================================")
     print("       EXPEDIENTE REGISTRADO")
