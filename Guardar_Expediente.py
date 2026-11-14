@@ -3,7 +3,7 @@ import os
 
 def escribir_csv(ruta, encabezados, lista):
     os.makedirs("datos", exist_ok=True)
-    campos = ["codigo", "codigo_estudiante", "nivel", "estado"]
+
     with open(ruta, "w", newline="", encoding="utf-8-sig") as archivo:
         escritor = csv.DictWriter(archivo, fieldnames=encabezados)
         escritor.writeheader()
@@ -59,5 +59,7 @@ def guardar_solo_expedientes(expedientes):
     print("\nExpediente guardado automáticamente en el CSV.")
 
 def guardar_solo_calificaciones(calificaciones):
+    os.makedirs("datos", exist_ok=True)
+    
     encabezados_cal = ["codigo_expediente", "bimestre1", "bimestre2", "bimestre3", "bimestre4"]
     escribir_csv("datos/calificaciones.csv", encabezados_cal, calificaciones)
