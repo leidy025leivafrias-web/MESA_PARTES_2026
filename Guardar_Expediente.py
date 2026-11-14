@@ -3,6 +3,7 @@ import os
 
 def escribir_csv(ruta, encabezados, lista):
     os.makedirs("datos", exist_ok=True)
+    campos = ["codigo", "codigo_estudiante", "nivel", "estado"]
     with open(ruta, "w", newline="", encoding="utf-8-sig") as archivo:
         escritor = csv.DictWriter(archivo, fieldnames=encabezados)
         escritor.writeheader()
@@ -27,3 +28,36 @@ def guardar_expedientes(padres, madres, estudiantes, familias, expedientes, cali
     print("¡Respaldo exitoso! Todos los registros fueron guardados en la carpeta 'datos/'")
     print("\n")
 
+def cargar_csv(ruta):
+    lista = []
+    if not os.path.exists(ruta):
+        return lista
+    try:
+        with open(ruta, mode="r", encoding="utf-8-sig") as archivo:
+            lector = csv.DictReader(archivo)
+            for fila in lector:
+                lista.append(fila)
+    except Exception as e:
+        print(f"Error al cargar {ruta}: {e}")
+    return lista
+
+def cargar_expedientes():
+    return cargar_csv("datos/expedientes.csv")
+
+def cargar_calificaciones():
+    lista = cargar_csv("datos/calificaciones.csv")
+    for registro in lista:
+        for clave in ("bimestre1", "bimestre2", "bimestre3", "bimestre4"):
+            registro[clave] = float(registro[clave])
+    return lista
+
+def guardar_solo_expedientes(expedientes):
+    os.makedirs("datos", exist_ok=True)
+
+    encabezados= ["codigo", "codigo_estudiante", "nivel", "estado"]
+    escribir_csv("datos/expedientes.csv", encabezados, expedientes)
+    print("\nExpediente guardado automáticamente en el CSV.")
+
+def guardar_solo_calificaciones(calificaciones):
+    encabezados_cal = ["codigo_expediente", "bimestre1", "bimestre2", "bimestre3", "bimestre4"]
+    escribir_csv("datos/calificaciones.csv", encabezados_cal, calificaciones)
