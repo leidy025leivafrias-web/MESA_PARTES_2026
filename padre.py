@@ -48,10 +48,10 @@ def validar_telefono():
 
 def validar_correo():
     while True:
-        correo = input("Correo electrónico: ").strip()
-        if "@" in correo and "." in correo and " " not in correo:
-            return correo.lower()
-        print("Error: ingrese un correo válido.")
+        correo = input("Correo electrónico (@gmail.com): ").strip().lower()
+        if correo.endswith("@gmail.com") and " " not in correo and len(correo) > 10:
+            return correo
+        print("Error: ingrese un correo  que termine en @gmail.com")
 
 def registrar_padre():
     print("\n--- REGISTRO DE PADRE ---")
