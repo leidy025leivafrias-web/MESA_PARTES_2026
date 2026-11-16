@@ -3,6 +3,21 @@ from padre import registrar_padre
 from madre import registrar_madre
 from estudiantes import registrar_estudiante, cargar_estudiantes
 from familia import registrar_familia
+from padre import registrar_padre
+from modificar_padre import modificar_padre
+from eliminar_padre import eliminar_padre
+
+from madre import registrar_madre
+from modificar_madre import modificar_madre
+from eliminar_madre import eliminar_madre
+
+from estudiantes import registrar_estudiante, cargar_estudiantes
+from modificar_estudiante import modificar_estudiante
+from eliminar_estudiante import eliminar_estudiante
+
+from familia import registrar_familia
+from modificar_familia import modificar_familia
+from eliminar_familia import eliminar_familia
 #PASO 3
 from Expedientes import Expedientes
 from listar_expedientes import listado_expedientes
@@ -52,23 +67,72 @@ def main():
             opcion = input("> ")
             
             if opcion == '1':
-                print("\n--- GESTIÓN DE PERSONAS ---")
-                print("1. Registrar Padre")
-                print("2. Registrar Madre")
-                print("3. Registrar Estudiante")
-                sub_opcion = input("Seleccione una opción: ").strip()
-                
-                if sub_opcion == '1':
-                    registrar_padre()
-                elif sub_opcion == '2':
-                    registrar_madre()
-                elif sub_opcion == '3':
-                    registrar_estudiante()
-                else:
-                    print("*Opción no válida.*")
+                while True:
+                    print("\n--- GESTIÓN DE PERSONAS ---")
+                    print("1. Registrar Padre")
+                    print("2. Registrar Madre")
+                    print("3. Registrar Estudiante")
+                    print("4. Modificar Persona")
+                    print("5. Eliminar Persona")
+                    print("6. Volver al Menu principal")
+                    sub_opcion = input("Seleccione una opción: ").strip()
+                    
+                    if sub_opcion == '6':
+                        break
+                    elif sub_opcion == "1":
+                        registrar_padre()
+                    elif sub_opcion == '2':
+                        registrar_madre()
+                    elif sub_opcion == '3':
+                        registrar_estudiante()
+                    elif sub_opcion == "4":
+                        print("¿Qué persona desea modificar?")
+                        print("1. Padre | 2. Madre | 3. Estudiante")
+                        op_mod = input("Elija (1-3): ").strip()
+                        if op_mod == '1':
+                            modificar_padre()
+                        elif op_mod == '2':
+                            modificar_madre()
+                        elif op_mod == '3':
+                            modificar_estudiante()
+                        else:
+                            print("Opción no válida.")
+                    elif sub_opcion == '5':
+                        print("\n¿Qué persona desea eliminar?")
+                        print("1. Padre | 2. Madre | 3. Estudiante")
+                        op_eli = input("Elija (1-3): ").strip()
+                        if op_eli == '1':
+                            eliminar_padre()
+                        elif op_eli == '2':
+                            eliminar_madre()
+                        elif op_eli == '3':
+                            eliminar_estudiante()
+                        else:
+                            print("Opción no válida.")
+                    else:
+                        print("Opción no válida.")
+                        input("\nPresione enter para continuar...")
 
             elif opcion == "2":
-                registrar_familia()
+                while True:
+                    print("\n--- GESTIÓN DE FAMILIAS ---")
+                    print("1. Registrar Familia")
+                    print("2. Modificar Vínculo Familiar")
+                    print("3. Eliminar Vínculo Familiar")
+                    print("4. Volver al Menú Principal")
+                    sub_fam = input("Seleccione una opción: ").strip()
+                    
+                    if sub_fam == '4':
+                        break
+                    elif sub_fam == '1':
+                        registrar_familia()
+                    elif sub_fam == '2':
+                        modificar_familia()
+                    elif sub_fam == '3':
+                        eliminar_familia()
+                    else:
+                        print("Opción no válida.")
+                    input("\nPresione enter para continuar...")
 
             elif opcion == "3":
                 while True:
@@ -83,7 +147,11 @@ def main():
                     if sub_opcion_exp == "6":
                         break
                     estudiantes = cargar_estudiantes()
-                    
+
+                    if sub_opcion_exp == "6":
+                        break
+                    estudiantes = cargar_estudiantes()
+
                     if sub_opcion_exp == '1':
                         Expedientes(expedientes, estudiantes)
                     elif sub_opcion_exp == '2':
