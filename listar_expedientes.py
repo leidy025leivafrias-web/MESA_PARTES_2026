@@ -37,14 +37,14 @@ def listado_expedientes(expedientes):
 
         if estudiante:
             nombre = (
-            estudiante.get("nombres", "") + " " +
-            estudiante.get("paterno", "") + " " +
-            estudiante.get("materno", "")
-        )
+                estudiante.get("nombres", "") + " " +
+                estudiante.get("paterno", "") + " " +
+                estudiante.get("materno", "")
+            )
         else:
             nombre = "Estudiante no encontrado"
 
-    print(
+        print(
         f"{numero}. {expediente.get('codigo')} "
         f"- {nombre.strip()} ({codigo_estudiante})"
     )
