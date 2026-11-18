@@ -22,6 +22,7 @@ from eliminar_familia import eliminar_familia
 from Expedientes import Expedientes
 from listar_expedientes import listado_expedientes
 from buscar_expedientes import buscar_expedientes
+from ordenar_expedientes import ordenar_expedientes_por_codigo
 from modificar_expediente import modificar_expediente
 from eliminar_expediente import eliminar_expediente
 #PASO 4
@@ -140,15 +141,16 @@ def main():
                     print("1. Registrar Expediente")
                     print("2. Listar Expedientes")
                     print("3. Buscar Expediente")
-                    print("4. Modificar Expediente")
-                    print("5. Eliminar Expediente")
-                    print("6. Volver al Menú Principal")
+                    print("4. Ordenar Expedientes")
+                    print("5. Modificar Expediente")
+                    print("6. Eliminar Expediente")
+                    print("7. Volver al Menú Principal")
                     sub_opcion_exp = input("Seleccione una opción: ").strip()
-                    if sub_opcion_exp == "6":
+                    if sub_opcion_exp == "7":
                         break
                     estudiantes = cargar_estudiantes()
 
-                    if sub_opcion_exp == "6":
+                    if sub_opcion_exp == "7":
                         break
                     estudiantes = cargar_estudiantes()
 
@@ -158,9 +160,11 @@ def main():
                         listado_expedientes(expedientes)
                     elif sub_opcion_exp == '3':
                         buscar_expedientes(expedientes)
-                    elif sub_opcion_exp == '4':
+                    elif sub_opcion_exp == "4":
+                        ordenar_expedientes_por_codigo(expedientes)
+                    elif sub_opcion_exp == '5':
                         modificar_expediente(expedientes, estudiantes)
-                    elif sub_opcion_exp == "5":
+                    elif sub_opcion_exp == "6":
                         eliminar_expediente(expedientes)
                     else:
                         print("*Opción no válida.*")
