@@ -14,9 +14,9 @@ def buscar_expedientes(expedientes):
         if expediente.get("codigo", "").strip().upper() == codigo_buscado:
             expediente_encontrado = expediente
             break
-        if expediente_encontrado is None:
-            print("\nERROR: No se encontró ningún expediente con ese código.")
-            return None
+    if expediente_encontrado is None:
+        print("\nERROR: No se encontró ningún expediente con ese código.")
+        return None
 
     print("\n========================================")
     print("       EXPEDIENTE ENCONTRADO")

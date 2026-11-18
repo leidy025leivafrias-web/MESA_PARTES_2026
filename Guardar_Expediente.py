@@ -54,7 +54,7 @@ def cargar_calificaciones():
 def guardar_solo_expedientes(expedientes):
     os.makedirs("datos", exist_ok=True)
 
-    encabezados= ["codigo", "codigo_estudiante", "nivel", "estado"]
+    encabezados= ["codigo", "codigo_estudiante", "nivel"]
     escribir_csv("datos/expedientes.csv", encabezados, expedientes)
     print("\nExpediente guardado automáticamente en el CSV.")
 
