@@ -21,8 +21,12 @@ def guardar_estudiantes(lista):
         escritor.writerows(lista)
 
 def generar_codigo_estudiante(lista):
-    numero = len(lista) + 1
-    return f"E{numero:03d}"
+    mayor = 0
+    for e in lista:
+        numero = int(e["codigo"][1:])
+        if numero > mayor:
+            mayor = numero
+    return f"E{mayor + 1:03d}"
 
 def validar_texto(mensaje):
     while True:

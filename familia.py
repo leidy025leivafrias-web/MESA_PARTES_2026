@@ -25,8 +25,12 @@ def guardar_familias(lista):
         escritor.writerows(lista)
 
 def generar_codigo_familia(lista):
-    numero = len(lista) + 1
-    return f"F{numero:03d}"
+    mayor = 0
+    for f in lista:
+        numero = int(f["codigo_familia"][1:])
+        if numero > mayor:
+            mayor = numero
+    return f"F{mayor + 1:03d}"
 
 def registrar_familia():
     print("\n")

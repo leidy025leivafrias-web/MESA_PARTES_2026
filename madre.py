@@ -21,8 +21,12 @@ def guardar_madres(lista):
         escritor.writerows(lista)
 
 def generar_codigo_madre(lista):
-    numero = len(lista) + 1
-    return f"M{numero:03d}"
+    mayor = 0
+    for m in lista:
+        numero = int(m["codigo"][1:])
+        if numero > mayor:
+            mayor = numero
+    return f"M{mayor + 1:03d}"
 
 def validar_texto(mensaje):
     while True:

@@ -21,8 +21,12 @@ def guardar_padres(lista):
         escritor.writerows(lista)
 
 def generar_codigo_padre(lista):
-    numero = len(lista) + 1
-    return f"P{numero:03d}"
+    mayor = 0
+    for p in lista:
+        numero = int(p["codigo"][1:])
+        if numero > mayor:
+            mayor = numero
+    return f"P{mayor + 1:03d}"
 
 def validar_texto(mensaje):
     while True:
